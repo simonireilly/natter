@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10.13.0
+    steps:
+      - checkout
+      - run:
+          name: Installing Linux dependencies'
+          command: sudo apt-get install libxtst-dev libpng++-dev sox
+      - run:
+          name: Installing node packages
+          command: npm i
+      - run:
+          name: Install the chrome driver
+          command: npm install --save-dev electron-chromedriver
+      - run:
+          name: Running the node tests
+          command: npm test
+
