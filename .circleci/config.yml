@@ -12,9 +12,6 @@ jobs:
           name: Installing node packages
           command: npm i
       - run:
-          name: Install the chrome driver
-          command: npm install --save-dev electron-chromedriver
-      - run:
           name: Running the node tests
           command: npm test
 
