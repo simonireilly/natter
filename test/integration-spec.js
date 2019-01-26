@@ -7,7 +7,7 @@ chai.should();
 chai.use(chaiAsPromised);
 
 describe("test-login-form", function () {
-  this.timeout(20000)
+  this.timeout(30000)
 
     // Start spectron
     before(function () {
@@ -28,7 +28,7 @@ describe("test-login-form", function () {
     // When running locally it is 2
     it('open window', function () {
       return app.client.waitUntilWindowLoaded().getWindowCount()
-      .should.eventually.below(2);
+      .should.eventually.below(3);
     });
 
     // click on link in sidebar

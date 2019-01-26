@@ -16,7 +16,7 @@ const initialiseSpectron = () => {
            ELECTRON_ENABLE_STACK_DUMPING: true,
            NODE_ENV: "development"
        },
-       startTimeout: 20000,
+       startTimeout: 30000,
        chromeDriverLogPath: '../chromedriverlog.txt'
   });
 }
