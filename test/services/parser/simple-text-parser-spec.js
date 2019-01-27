@@ -6,7 +6,7 @@ describe('Simple Text Parser', function () {
  it('should allow setting rules for keys', function () {
     // Arrange
     simpleTextParser["addKey"]("slap", "enter", "press")
-    simpleTextParser["addKey"]("zebra", "control+up", "hold")
+    simpleTextParser["addKey"]("zebra", "control+up", "toggle")
 
     const firstSpeech = { text: "slap" }
     const secondSpeech = { text: "zebraslap"}
@@ -18,7 +18,7 @@ describe('Simple Text Parser', function () {
     // Assert
     const firstExpectation = [{ type: 'key', value: 'enter', event: "press" }]
     const secondExpectation = [
-      { type: 'key', value: 'control+up', event: "hold" },
+      { type: 'key', value: 'control+up', event: "toggle" },
       { type: 'key', value: 'enter', event: "press" }
     ]
     assert.deepEqual(firstParsingTree, firstExpectation);

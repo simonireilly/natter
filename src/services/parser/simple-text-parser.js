@@ -19,7 +19,7 @@ const addKey = (matcher, key, event) => {
 // Trigger the parse
 const parse = (data) => {
   let parsedData = parser.toTree(data.text)
-  return parsedData
+  return { actions: parsedData, complete: data.complete }
 }
 
 module.exports = {

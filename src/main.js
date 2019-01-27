@@ -81,10 +81,10 @@ const processSpeech = (data) => {
   const parser = userPreferences.get("parser");
   const executor = userPreferences.get("executor");
 
-  mainWindow.webContents.send('file-save', data);
+  mainWindow.webContents.send('active-transcription', data);
 
-  parsers[parser]["parse"](data);
-  executors[executor]["string"](data);
+  var dataTree = parsers[parser]["parse"](data);
+  executors[executor]["tree"](dataTree);
 }
 
 // Encapsulating the speech broadcast callback function to start
