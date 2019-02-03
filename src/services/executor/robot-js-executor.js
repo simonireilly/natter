@@ -2,7 +2,7 @@
 //
 // @param data -> Array of Commands to Execute
 //
-// The executioner may not use the `is_complete` property; it perhaps will only receive a
+// The executioner may not use the `complete` property; it perhaps will only receive a
 // completely parsed string of commands or a serialised object of commands
 
 import robot from 'robotjs';
@@ -21,14 +21,14 @@ const executeTree = (
     "key-tap": robot.keyTap,
     "key-toggle": robot.keyToggle,
     "text": robot.typeString,
-  }
-) => {
+  }) => {
+  console.log(data)
   if(data.complete) {
     data.actions.forEach(function (action) {
       executions
       switch(action.type) {
         case 'key-tap':
-          executions[action.type](action.value, action.modifier)
+          executions[action.type](action.value)
           break;
         case 'key-toggle':
           executions[action.type](action.value, action.event, action.modifier)
@@ -43,7 +43,6 @@ const executeTree = (
 }
 
 const commands = {
-  string: executeString,
   tree: executeTree
 }
 

@@ -12,7 +12,7 @@ describe('Robot JS executor', function () {
       // Arrange
       let data = {
         actions: [
-          { type: 'key-tap', value: 'enter', modifier: [""] }
+          { type: 'key-tap', value: 'enter', event: '', modifier: [""] }
         ],
         complete: true
       }

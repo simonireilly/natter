@@ -18,7 +18,7 @@ describe('Simple Text Parser', function () {
       // Arrange
       let expectation = {
         actions: [
-        { type: 'key-tap', value: 'enter', modifier: [""] }
+        { type: 'key-tap', value: 'enter', event: '', modifier: [""] }
         ],
         complete: true
       }
@@ -37,7 +37,7 @@ describe('Simple Text Parser', function () {
       let expectation = {
         actions: [
           { type: 'text', text: 'some text ' },
-          { type: 'key-tap', value: 'enter', modifier: [""] },
+          { type: 'key-tap', value: 'enter', event: '', modifier: [""] },
           { type: 'text', text: ' something on a new line' }
         ],
         complete: true
