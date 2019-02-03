@@ -33,16 +33,21 @@ const userPreferences = new Store({
   },
 });
 
-let toolbarSize = { minWidth: 1025, minHeight: 80, maxWidth: 1025, maxHeight: 80 }
-let grammarSize = { minWidth: 1025, minHeight: 800, maxWidth: 1025, maxHeight: 800 }
 
 let mainWindow;
 const createWindow = async () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    minWidth: 960,
-    minHeight: 80,
-    alwaysOnTop: true
+    minWidth: 980,
+    minHeight: 60,
+    maxHeight: 60,
+    show: false,
+    alwaysOnTop: true,
+    title: "Natter",
+    transparent: true,
+    frame: false,
+    x: 30,
+    y: 70
   });
 
   // and load the index.html of the app.
@@ -53,6 +58,10 @@ const createWindow = async () => {
     await installExtension(REACT_DEVELOPER_TOOLS);
     mainWindow.webContents.openDevTools();
   }
+
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.show()
+  })
 
   mainWindow.on("closed", () => {
     mainWindow = null;
@@ -107,7 +116,7 @@ ipcMain.on("toggle-speech", function(event, data) {
   console.log(`Main Recieved ->`);
   console.log(data);
 
-  const speechAdapter = userPreferences.get("speechAdapter", "google-speech-api");
+  const speechAdapter = userPreferences.get("speechAdapter");
   const adapter = speech.adapters[speechAdapter]
   data === "start" ? adapter.start(processSpeech) : adapter.stop();
 });
