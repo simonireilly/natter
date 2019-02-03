@@ -18,17 +18,15 @@ import robot from 'robotjs';
 const executeTree = (
   data,
   executions = {
-    "key-tap": robot.keyTap,
-    "key-toggle": robot.keyToggle,
+    "key-tap": safeKeyTap,
+    "key-toggle": safeKeyToggle,
     "text": robot.typeString,
   }) => {
-  console.log(data)
   if(data.complete) {
     data.actions.forEach(function (action) {
-      executions
       switch(action.type) {
         case 'key-tap':
-          executions[action.type](action.value)
+          executions[action.type](action.value, action.modifier)
           break;
         case 'key-toggle':
           executions[action.type](action.value, action.event, action.modifier)
@@ -40,6 +38,14 @@ const executeTree = (
       }
     });
   }
+}
+
+const safeKeyTap = (value, modifier) => {
+  modifier === undefined ? robot.keyTap(value) : robot.keyTap(value, modifier)
+}
+
+const safeKeyToggle = (value, event, modifier) => {
+  modifier === undefined ? robot.keyTap(value, event) : robot.keyTap(value, event, modifier)
 }
 
 const commands = {

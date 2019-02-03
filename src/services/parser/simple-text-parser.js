@@ -8,7 +8,7 @@ const parser = new Parser();
 // @param key -> A key or set of keys to be pressed
 // @param event -> An event type of press, hold, release
 
-const addKey = (matcher, type, value, modifier = [""], event = "") => {
+const addKey = (matcher, type, value, modifier, event) => {
   parser.addRule(matcher, () => {
     return {type: type, value: value, event: event, modifier: modifier}
   })
