@@ -3,6 +3,7 @@ import { app, BrowserWindow } from "electron";
 import installExtension, { REACT_DEVELOPER_TOOLS } from "electron-devtools-installer";
 import { enableLiveReload } from "electron-compile";
 import { ipcMain } from "electron"
+const path = require('path')
 
 // Libraries
 import Store from "electron-store";
@@ -42,12 +43,12 @@ const createWindow = async () => {
     minHeight: 60,
     maxHeight: 60,
     show: false,
-    alwaysOnTop: true,
     title: "Natter",
     transparent: true,
     frame: false,
     x: 30,
-    y: 70
+    y: 70,
+    icon: path.join(__dirname, 'assets/icons/128x128.png')
   });
 
   // and load the index.html of the app.
